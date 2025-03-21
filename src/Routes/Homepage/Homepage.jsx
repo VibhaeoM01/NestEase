@@ -1,17 +1,19 @@
-import Searchbar from "../../components/Searchbar/Searchbar";
+import Searchbar from "../../components/Searchbar/Searchbar"
 import "./homepage.scss";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 function Homepage() {
+  const {currentUser} = useContext(AuthContext); 
+  console.log(currentUser); 
+  
   return (
     <div className="homepage">
       <div className="textcontainer">
         <div className="wrapper">
-          <h1 className="title">Find Real Estate & Get Your Dream Place</h1>
+          <h1 className="title">Your Ideal Stay Awaits – Find It Today!</h1>
           <p>
-          Lorem fefipsum dolor sit amet consectetur, adipisicing elit. Expedita
-          animi repellat ullam amet, explicabo voluptate modi, deserunt officiis
-          quis velit, voluptatibus est natus architecto fugit cupiditate nisi
-          quas illo in!
+          Discover a stay that matches your lifestyle. Experience comfort, security, and convenience with carefully curated living spaces. Whether you seek a vibrant community or a peaceful retreat, find a place that feels like home – effortlessly and seamlessly!
         </p>
         
         
@@ -35,7 +37,7 @@ function Homepage() {
       </div>
       </div>
       <div className="imagecontainer">
-        <img src="bg.png" alt="" />
+        <img src="bg1 up.png" alt="" />
       </div>
     </div>
   );

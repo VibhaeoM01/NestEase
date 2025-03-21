@@ -1,6 +1,6 @@
 import Homepage from "./Routes/Homepage/Homepage"
 import ListPage from "./Routes/listPage/listPage";
-import Layout from "./Routes/layout/layout";
+import  {Layout, RequireAuth} from "./Routes/layout/layout";
 
 import {
   createBrowserRouter,
@@ -13,7 +13,9 @@ import SinglePage from "./Routes/singlePage/singlePage";
 import Profile from "./Routes/profile/profile";
 import Register from "./Routes/register/register";
 import Login from "./Routes/login/login";
+import ProfileUpdatePage from "./Routes/profileUpdatePage/profileUpdatePage";
 
+function App() {
 const router = createBrowserRouter([
   {
     path: "/",
@@ -31,10 +33,7 @@ const router = createBrowserRouter([
         path:"/login",
         element:<Login/>
       },
-      {
-        path:"/profile",
-        element:<Profile />
-      },
+    
       {
         path:"/register",
         element:<Register/>
@@ -44,10 +43,24 @@ const router = createBrowserRouter([
         element:<SinglePage/>
       }
     ]
-  },
+  }, 
+  {
+    path: "/",
+    element: <RequireAuth />,
+    children:[
+      {
+        path:"/profile",
+        element:<Profile />
+      },
+      {
+        path:"/profile/update",
+        element:<ProfileUpdatePage />
+      },
+    ]
+  }
 ]);
 
-function App() {
+
   return (
  
 
@@ -55,4 +68,4 @@ function App() {
   )
 }
 
-export default App
+export default App;  

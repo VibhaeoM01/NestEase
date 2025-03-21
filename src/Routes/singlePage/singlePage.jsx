@@ -46,18 +46,18 @@ function SinglePage() {
                     <img src="/pet.png" alt="" />
                     <div className="featureText">
                         <span>Pet Policy</span>
-                        <p>Pets Allowed</p>
+                        <p>Varies by property</p>
                     </div>
                 </div>
                 <div className="feature">
                     <img src="/fee.png" alt="" />
                     <div className="featureText">
                         <span>Property Fees</span>
-                        <p>Must have 3x the rent in total household income</p>
+                        <p>Deposit & Rent Criteria</p>
                     </div>
                 </div>
             </div>
-            <p className="title">Room Sizes</p>
+            <p className="title">Room Area</p>
             <div className="sizes">
                 <div className="size">
                     <img src="/size.png" alt="" />
@@ -77,7 +77,7 @@ function SinglePage() {
             <div className="feature">
                     <img src="/school.png" alt="" />
                     <div className="featureText">
-                        <span>School</span>
+                        <span>Hospital</span>
                         <p>250m Away</p>
                     </div>
                 </div>

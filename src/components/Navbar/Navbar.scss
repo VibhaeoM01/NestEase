@@ -37,9 +37,14 @@ nav {
     gap: 10px;
   }
   img {
-    width: 28px;
+    width: 30px;
+    height: 20px;
   }
   span {
+    font-weight: 800;
+    span{
+      color: #fece51;
+    }
     @include md {
       display: none;
     }
