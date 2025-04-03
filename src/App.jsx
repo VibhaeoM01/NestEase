@@ -14,6 +14,8 @@ import Profile from "./Routes/profile/profile";
 import Register from "./Routes/register/register";
 import Login from "./Routes/login/login";
 import ProfileUpdatePage from "./Routes/profileUpdatePage/profileUpdatePage";
+import NewPostPage from "./Routes/newPostPage/newPostPage";
+import { listPageLoader, profilePageLoader, singlePageLoader } from "./lib/loaders";
 
 function App() {
 const router = createBrowserRouter([
@@ -27,7 +29,8 @@ const router = createBrowserRouter([
       },
       {
         path:"/list",
-        element:<ListPage/>
+        element:<ListPage/>,
+        loader:listPageLoader,
       },
       {
         path:"/login",
@@ -40,7 +43,8 @@ const router = createBrowserRouter([
       },
       {
         path:"/:id",
-        element:<SinglePage/>
+        element:<SinglePage/>,
+        loader:singlePageLoader,
       }
     ]
   }, 
@@ -50,11 +54,16 @@ const router = createBrowserRouter([
     children:[
       {
         path:"/profile",
-        element:<Profile />
+        element:<Profile />,
+        loader:profilePageLoader          
       },
       {
         path:"/profile/update",
         element:<ProfileUpdatePage />
+      },
+      {
+        path:"/add",
+        element:<NewPostPage />
       },
     ]
   }

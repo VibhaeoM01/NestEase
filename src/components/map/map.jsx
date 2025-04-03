@@ -4,7 +4,7 @@ import './map.scss'
 import Pin from "../pin/pin";
 
 function Map({ items }) {
-  const position = [52.4797, -1.90269];
+  const position = [22.5937, 78.9629];
   return (
     <MapContainer center={position} zoom={6} scrollWheelZoom={false} className="map">
       <TileLayer

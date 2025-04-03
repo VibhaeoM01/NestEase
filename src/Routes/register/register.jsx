@@ -26,7 +26,7 @@ function Register() {
         catch(err)
         { 
             setError(err.response.data.message);
-            // console.log(err);
+            console.log(err);
         }
     };
   return (
@@ -43,7 +43,7 @@ function Register() {
         </form>
       </div>
       <div className="imgContainer">
-        <img src="/bg.png" alt="" />
+        <img src="bg1 up.png" alt="" />
       </div>
     </div>
   );

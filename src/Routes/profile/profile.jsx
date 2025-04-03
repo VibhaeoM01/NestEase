@@ -2,12 +2,12 @@ import Chat from "../../components/chat/chat";
 import List from "../../components/list/list";
 import "./profile.scss";
 import apiRequest from "../../lib/apiRequest"
-import { useNavigate,Link } from "react-router-dom";
+import { useNavigate,Link, useLoaderData } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
 function Profile() {
-
+  const data=useLoaderData();
  const{updateUser,currentUser}=useContext(AuthContext);
   const navigate=useNavigate();
 
@@ -37,14 +37,14 @@ function Profile() {
               <button onClick={handlelogout}>Logout</button>
             </div>
             <div className="title">
-                <h1>My List</h1>
-                <button >Create New Post</button>
+                {/* <h1>My List</h1> */}
+                <Link to="/add"><button>Create New Post</button></Link>
             </div>
-            <List /> 
+            {/* <List /> 
             <div className="title">
                 <h1>Saved List</h1> 
-            </div>
-            <List />
+            </div> */}
+            {/* <List /> */}
         </div>
         </div>
       <div className="chatContainer"><div className="wrapper">
