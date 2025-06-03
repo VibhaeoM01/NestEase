@@ -8,7 +8,7 @@ nav {
   a {
     transition: all 0.4s ease;
 
-    @include md{
+    @include md {
       font-size: 10px;
     }
 
@@ -20,9 +20,6 @@ nav {
     }
   }
 }
-
-
-
 
 .left {
   flex: 3;
@@ -42,7 +39,7 @@ nav {
   }
   span {
     font-weight: 800;
-    span{
+    span {
       color: #fece51;
     }
     @include md {
@@ -54,12 +51,7 @@ nav {
   }
 }
 
-
-
-
 .right {
-  
-  
   flex: 2;
   display: flex;
   gap: 50px;
@@ -68,16 +60,14 @@ nav {
   align-items: center;
   justify-content: flex-end;
 
-  @include md
-  {
+  @include md {
     background-color: white;
   }
 
-  @include sm
-  {
+  @include sm {
     background-color: white;
   }
-  .menuIcon { 
+  .menuIcon {
     display: none;
     z-index: 2;
     img {
@@ -88,12 +78,9 @@ nav {
 
     @include sm {
       display: inline;
-      // font-size: 24px;
     }
   }
 
-
-  
   .menu {
     position: absolute;
     background-color: black;
@@ -107,52 +94,74 @@ nav {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 24px ;
-    
+    font-size: 24px;
+    z-index: 100;
+
     &.active {
       right: 0;
       font-size: 24px;
     }
-    a{
+    a {
       font-size: 18px;
     }
 
-    @include sm{
-        a{
-            color: white;
-            display: initial;
-        }
+    @include sm {
+      a {
+        color: white;
+        display: initial;
+      }
     }
   }
 
+  .user {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    gap: 10px;
 
-  .user{
-   display: flex;
-   align-items: center;
-   font-weight: bold;
-
-   img{
-    width: 40px;
-    height: 40px;
-   border-radius: 50%;
-   object-fit: cover;
-   margin-right: 20px;  
-   }
-
-   span{
-    @include sm{
-      display: none;
+    img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 20px;
     }
-   }
 
-   .profile{
-    padding: 12px 24px;
-    background-color: #fece51;
-    cursor: pointer;
-    border:none;
-    border-radius: 10px;
-    position: relative;
-   }
+    span {
+      @include sm {
+        display: none;
+      }
+    }
+
+    .profile {
+      padding: 12px 24px;
+      background-color: #fece51;
+      cursor: pointer;
+      border: none;
+      border-radius: 10px;
+      position: relative;
+      text-decoration: none;
+      color: black;
+    }
+
+    .logout {
+      padding: 12px 24px;
+      background-color: #ff4444;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: #ff0000;
+      }
+
+      @include sm {
+        display: none;
+      }
+    }
   }
 
   a {
@@ -160,10 +169,10 @@ nav {
     margin: 20px;
   }
 
-  .notification{
+  .notification {
     position: absolute;
     top: -8px;
-    right: -8px; 
+    right: -8px;
     background-color: red;
     border-radius: 50%;
     width: 26px;
@@ -175,7 +184,9 @@ nav {
 
   .register {
     background-color: #fece51;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    border-radius: 10px;
   }
-
-
 }

@@ -17,6 +17,7 @@ function ListPage() {
           ))}
            
         </div>
+
       </div>
       <div className="mapContainer"><Map items={posts}/></div>
     </div>
@@ -24,3 +25,4 @@ function ListPage() {
 }
 
 export default ListPage;
+

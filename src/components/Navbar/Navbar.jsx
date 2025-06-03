@@ -1,16 +1,28 @@
 // import React from 'react'
 import { useContext, useState } from "react";
 import "./navbar.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext.jsx";
+import apiRequest from "../../lib/apiRequest";
 
 
 function Navbar() {
   const [open, setOpen] = useState(false);
-   const {currentUser} = useContext(AuthContext);3
+   const {currentUser, updateUser} = useContext(AuthContext);
+   const navigate = useNavigate();
    
    
    console.log("Current user data:", currentUser);
+
+  const handleLogout = async () => {
+    try {
+      await apiRequest.post("/auth/logout");
+      updateUser(null);
+      navigate("/");
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <nav>
@@ -34,6 +46,7 @@ function Navbar() {
             <div className="notification">3</div>
             <span>Profile</span>
             </Link>
+            <button onClick={handleLogout} className="logout">Logout</button>
           </div>
         ) : (
           <>
@@ -49,11 +62,20 @@ function Navbar() {
         </div>
         <div className={open ? "menu active" : "menu"}>
           <a href="/">Home</a>
-          <a href="/">About</a>
+          <a href="/">About</a> 
           <a href="/">Contact </a>
           <a href="/">Agents</a>
-          <a href="/">Sign in </a>
-          <a href="/">Sign Up </a>
+          {currentUser ? (
+            <>
+              <a href="/profile">Profile</a>
+              <a href="#" onClick={handleLogout}>Logout</a>
+            </>
+          ) : (
+            <>
+              <a href="/login">Sign in </a>
+              <a href="/register">Sign Up </a>
+            </>
+          )}
         </div>
       </div>
     </nav>

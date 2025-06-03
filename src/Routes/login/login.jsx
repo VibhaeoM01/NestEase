@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import "./login.scss";
-import apiRequest from "../../lib/apiRequest"
+  import apiRequest from "../../lib/apiRequest"
 import { useNavigate,Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 
@@ -13,7 +13,7 @@ function Login() {
   
     const navigate = useNavigate();
     const handlesubmit = async (e) =>{
-        e.preventDefault();
+        e.preventDefault(); 
         setIsLoading(true);
         setError("");
         const formdata=new FormData(e.target);

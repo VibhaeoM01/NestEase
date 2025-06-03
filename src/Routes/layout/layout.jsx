@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import Homepage from "../Homepage/Homepage";
 import "./layout.scss";
