@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 import "./navbar.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext.jsx";
-import apiRequest from "../../lib/apiRequest";
+import { apiRequest } from "../../lib/apiRequest";
 
 
 function Navbar() {
@@ -76,7 +76,7 @@ function Navbar() {
               <a href="/register">Sign Up </a>
             </>
           )}
-        </div>
+          </div>
       </div>
     </nav>
   );

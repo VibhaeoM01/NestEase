@@ -1,16 +1,39 @@
-import apiRequest from "./apiRequest";
+import { apiRequest } from "./apiRequest";
 
-export const singlePageLoader = async ({request,params})=>{
-    const res= await apiRequest("/posts/"+ params.id ) 
-    // console.log(res.data);
-    return res.data;
-}
-export const listPageLoader = async ({ request }) => {
-    const query = request.url.split("?")[1];
-    const res = await apiRequest(`/posts?${query}`); // Use `?` to construct the query string
-    return res.data;
+export const singlePageLoader = async ({request, params}) => {
+    try {
+        console.log("Loading post with ID:", params.id);
+        const res = await apiRequest("/posts/" + params.id);
+        console.log("Post data received:", res.data);
+        return res.data;
+    } catch (error) {
+        console.error("Error in singlePageLoader:", error);
+        throw error; // Let the error boundary handle it
+    }
 };
+
+export const listPageLoader = async ({ request }) => {
+    try {
+        const query = request.url.split("?")[1];
+        const res = await apiRequest(`/posts?${query}`);
+        return res.data;
+    } catch (error) {
+        console.error("Error in listPageLoader:", error);
+        throw error;
+    }
+};
+
 export const profilePageLoader = async () => { 
-    const res = await apiRequest(`/users/profilePosts`); // Use `?` to construct the query string
-    return res.data;
+    try {
+        const postsResponse = await apiRequest(`/users/profilePosts`);
+        const chatsResponse = await apiRequest(`/chats`);
+        
+        return {
+            postsResponse: postsResponse.data,
+            chatsResponse: chatsResponse.data
+        };
+    } catch (error) {
+        console.error("Error in profilePageLoader:", error);
+        throw error;
+    }
 };

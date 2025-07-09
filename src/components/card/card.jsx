@@ -4,7 +4,7 @@ function Card({ item }) {
   return (
     <div className="card">
       <Link to={`/${item.id}`} className="imageContainer">
-        <img src={item.img} alt="" />
+        <img src={item.images[0]} alt="" />
       </Link>
       <div className="textContainer">
         <h2 className="title">
@@ -16,21 +16,20 @@ function Card({ item }) {
         </p>
         <p className="price">$ {item.price}</p>
 
-
         <div className="bottom">
-        <div className="features">
-          <div className="feature">
-            <img src="/bed.png" alt="" />
-            <span>
-              {item.bedroom} {item.bedroom === 1 ? "bedroom" : "bedrooms"}
-            </span>
-          </div>
-          <div className="feature">
-            <img src="/bath.png" alt="" />
-            <span>
-              {item.bathroom} {item.bathroom === 1 ? "bathroom" : "bathrooms"}
-            </span>
-          </div>
+          <div className="features">
+            <div className="feature">
+              <img src="/bed.png" alt="" />
+              <span>
+                {item.bedroom} {item.bedroom === 1 ? "bedroom" : "bedrooms"}
+              </span>
+            </div>
+            <div className="feature">
+              <img src="/bath.png" alt="" />
+              <span>
+                {item.bathroom} {item.bathroom === 1 ? "bathroom" : "bathrooms"}
+              </span>
+            </div>
           </div>
           <div className="icons">
             <div className="icon">
@@ -40,10 +39,8 @@ function Card({ item }) {
               <img src="/chat.png" alt="" />
             </div>
           </div>
-        
+        </div>
       </div>
-      </div>
-      
     </div>
   );
 }

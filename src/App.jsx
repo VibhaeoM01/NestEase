@@ -1,7 +1,6 @@
 import Homepage from "./Routes/Homepage/Homepage"
 import ListPage from "./Routes/listPage/listPage";
-import  {Layout, RequireAuth} from "./Routes/layout/layout";
-
+import {Layout, RequireAuth} from "./Routes/layout/layout";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -16,12 +15,30 @@ import Login from "./Routes/login/login";
 import ProfileUpdatePage from "./Routes/profileUpdatePage/profileUpdatePage";
 import NewPostPage from "./Routes/newPostPage/newPostPage";
 import { listPageLoader, profilePageLoader, singlePageLoader } from "./lib/loaders";
+import ErrorBoundary from "./components/ErrorBoundary";
 
-function App() {
+// Add a simple loading component for hydration
+function HydrateFallback() {
+  return (
+    <div style={{ 
+      display: 'flex', 
+      justifyContent: 'center', 
+      alignItems: 'center', 
+      height: '100vh',
+      fontSize: '1.2rem'
+    }}>
+      Loading...
+    </div>
+  );
+}
+
+const App = () => {
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
+    errorElement: <ErrorBoundary />,
+    hydrateFallback: <HydrateFallback />,
     children:[
       {
         path:"/",
@@ -31,6 +48,7 @@ const router = createBrowserRouter([
         path:"/list",
         element:<ListPage/>,
         loader:listPageLoader,
+        errorElement: <ErrorBoundary />
       },
       {
         path:"/login",
@@ -45,25 +63,30 @@ const router = createBrowserRouter([
         path:"/:id",
         element:<SinglePage/>,
         loader:singlePageLoader,
+        errorElement: <ErrorBoundary />
       }
     ]
   }, 
   {
     path: "/",
     element: <RequireAuth />,
+    errorElement: <ErrorBoundary />,
     children:[
       {
         path:"/profile",
         element:<Profile />,
-        loader:profilePageLoader          
+        loader:profilePageLoader,
+        errorElement: <ErrorBoundary />          
       },
       {
         path:"/profile/update",
-        element:<ProfileUpdatePage />
+        element:<ProfileUpdatePage />,
+        errorElement: <ErrorBoundary />
       },
       {
         path:"/add",
-        element:<NewPostPage />
+        element:<NewPostPage />,
+        errorElement: <ErrorBoundary />
       },
     ]
   }
