@@ -5,9 +5,9 @@ import "./searchbar.scss";
 function Searchbar() {
   const [change, setchange] = useState({
     type: "buy",
-    location: "",
-    minPrice: 0,
-    maxPrice: 0,
+    city: "",
+    minPrice: "",
+    maxPrice: "",
   });
 
   const types = ["buy", "rent"];
@@ -16,7 +16,7 @@ function Searchbar() {
   };
 
 const handleChange = e =>{
-  setQuery((prev) =>({...prev,[e.target.name]: e.target.value}));
+  setchange((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 };
   return (
     <div className="searchbar">
@@ -46,11 +46,11 @@ const handleChange = e =>{
           placeholder="Max Price"
           onChange={handleChange}
         />
-        <Link to={`/list?type=${change.type}&city=${change.city}&minPrice=${change.minPrice}&maxPrice=${change.maxPrice}`}><button>
+        <Link to={`/list?type=${change.type === 'all' ? '' : change.type}${change.city ? `&city=${change.city}` : ''}${change.minPrice ? `&minPrice=${change.minPrice}` : ''}${change.maxPrice ? `&maxPrice=${change.maxPrice}` : ''}`}><button>
           <img src="/search.png" alt="" />
         </button></Link>
-      </form>
-    </div>
+      </form> 
+    </div>   
   );
 }
 
